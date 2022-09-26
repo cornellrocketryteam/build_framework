@@ -89,12 +89,12 @@ set(CMAKE_CXX_COMPILER g++)
 # Declare project
 project(build_framework LANGUAGES CXX)
 
-# Set up source and test directories
+# Set up directories
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(TEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests")
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-# Include path to source files
+# Include path to source and header files
 include_directory_files(${INCLUDE_DIR})
 include_directory_files(${SRC_DIR})
 
@@ -110,7 +110,7 @@ add_library(${PROJECT_NAME} ${LIB_SRCS})
 # Compile targets
 #---------------------------------------------------------------------------
 
-add_custom_target(tests COMMAND ctest "--timeout" "10" ${CTEST_OUTPUT_ON_FAILURE})
+add_custom_target(all_tests COMMAND ctest "--timeout" "10" ${CTEST_OUTPUT_ON_FAILURE})
 
 foreach(TEST_FILE ${TEST_FILES})
 
